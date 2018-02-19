@@ -1,7 +1,7 @@
 # Wipe all your tweets.
 > More delete options will come.
 
-## __How to__ ?
+## How to ?
 * Go into your [twitter account settings](https://twitter.com/settings/account) and ask for your tweets archive (bottom of the page).
 * Check your mailbox (the one associated with your twitter account) and download the zip archive.
 * Now extract `tweets.csv` from the downloaded archive into __wtweets__'s directory.
@@ -14,15 +14,15 @@
 * Once generated, copy these four credentials in their respective places in the `credentials.toml` file.
 * You are ready to go.
 
-## __Run__ :
+## Why are we using a csv file to proceed deletion ?
+The twitter API sets a limit of 3200 tweets recovered per user.  
+By parsing csv file, we can retrieve tweets ID (and more) directly and without worries.
+
+## Run :
 __WARNING:__   
-_The current version of wtweets will delete __all__ your tweets, beyond the 3200 tweets API limitation._  
+_The current version of wtweets will delete __all__ your tweets._  
 No options to choose a specific date yet.
 ```
 # pip install -r requirements.txt
 python3 wtweets.py
 ```
-
-__TODO__
-1. Threads support ?
-2. CLI options
