@@ -17,8 +17,8 @@ def arguments():
     parser = argparse.ArgumentParser()
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--csv', nargs='?', const='tweets.csv', default='tweets.csv', help='use csv file for mass tweets delete', metavar='FILENAME')
-    group.add_argument('-s', '--soft', action='store_true', default=False, help='only wipe your 3200 newer tweets')
+    group.add_argument('--csv', nargs='?', const='tweets.csv', default='tweets.csv', help='use csv file for mass removal of tweets', metavar='FILENAME')
+    group.add_argument('-s', '--soft', action='store_true', default=False, help='wipe your 3200 newer tweets')
     group.add_argument('-n', '--none', action='store_true', default=False, help='do not proceed to tweets deletion')
 
     parser.add_argument('-f', '--fav', action='store_true', default=False, help='wipe your favorites/likes')
@@ -78,7 +78,7 @@ def wipe_csv(api, args):
 
 def wipe_soft(api):
     print("\nYou made the choice to use 'soft deletion'.")
-    print("Twitter API limits us to your 3200 newer tweets for deletion.")
+    print("Twitter API limits us to your 3200 newer tweets.")
     print("We are going to wipe your tweets (200 by 200)")
 
     if not doit(): return

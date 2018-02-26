@@ -2,7 +2,7 @@
 > More delete options will come.
 
 ## How to ?
-__mass tweets deletion :__
+__mass delete tweets :__
 * Go into your [twitter account settings](https://twitter.com/settings/account) and ask for your tweets archive (bottom of the page).
 * Check your mailbox (the one associated with your twitter account) and download the zip archive.
 * Now extract `tweets.csv` from the downloaded archive into __wtweets__'s directory.
@@ -32,8 +32,8 @@ usage: wtweets.py [-h] [--csv [FILENAME] | -s | -n] [-f] [-d]
 
 optional arguments:
   -h, --help        show this help message and exit
-  --csv [FILENAME]  use csv file for mass tweets delete
-  -s, --soft        only wipe your 3200 newer tweets
+  --csv [FILENAME]  use csv file for mass removal of tweets
+  -s, --soft        wipe your 3200 newer tweets
   -n, --none        do not proceed to tweets deletion
   -f, --fav         wipe your favorites/likes
   -d, --dm          wipe your direct messages
@@ -41,11 +41,11 @@ optional arguments:
 
 ## Run examples :
 
-1. Mass tweets deletion using `tweets.csv` :
+1. Mass delete tweets using `tweets.csv` :
 ```
 python3 wtweets.py
 ```
-2. Mass tweets deletion + favorites deletion
+2. Mass delete tweets + favorites deletion
 ```
 python3 wtweets.py -f
 ```
