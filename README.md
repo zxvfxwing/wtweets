@@ -2,27 +2,55 @@
 > More delete options will come.
 
 ## How to ?
+__mass tweets deletion :__
 * Go into your [twitter account settings](https://twitter.com/settings/account) and ask for your tweets archive (bottom of the page).
 * Check your mailbox (the one associated with your twitter account) and download the zip archive.
 * Now extract `tweets.csv` from the downloaded archive into __wtweets__'s directory.
+
+__make the script work :__
 * Create your own twitter application [here](https://apps.twitter.com/)
     1. Permissions tab :
-        - Set "Read and Write" access.
+        - Set "__Read and Write__" access.
     2. Keys and Access Tokens tab :
         - Generate __consumer key__ & __consumer secret__ (normally done at app creation) ;
         - Generate __access token__ & __access token secret__.
 * Once generated, copy these four credentials in their respective places in the `credentials.toml` file.
 * You are ready to go.
 
-## Why are we using a csv file to proceed deletion ?
+## Why are we using a csv file to proceed mass deletion ?
 The twitter API sets a limit of 3200 tweets recovered per user.  
 By parsing csv file, we can retrieve tweets ID (and more) directly and without worries.
 
-## Run :
-__WARNING:__   
-_The current version of wtweets will delete __all__ your tweets._  
-No options to choose a specific date yet.
+## Dependancies :
 ```
 # pip install -r requirements.txt
+```
+
+## Usage :
+```
+usage: wtweets.py [-h] [--csv [FILENAME] | -s | -n] [-f] [-d]
+
+optional arguments:
+  -h, --help        show this help message and exit
+  --csv [FILENAME]  use csv file for mass tweets delete
+  -s, --soft        only wipe your 3200 newer tweets
+  -n, --none        do not proceed to tweets deletion
+  -f, --fav         wipe your favorites/likes
+  -d, --dm          wipe your direct messages
+```
+
+## Run examples :
+
+1. Mass tweets deletion using `tweets.csv` :
+```
 python3 wtweets.py
 ```
+2. Mass tweets deletion + favorites deletion
+```
+python3 wtweets.py -f
+```
+3. Only delete your favorites :
+```
+python3 wtweets.py -n -f
+```
+
