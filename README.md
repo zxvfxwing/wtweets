@@ -21,7 +21,7 @@ __make the script work :__
 The twitter API sets a limit of 3200 tweets recovered per user.  
 By parsing csv file, we can retrieve tweets ID (and more) directly and without worries.
 
-## Dependancies :
+## Dependencies :
 ```
 # pip install -r requirements.txt
 ```
