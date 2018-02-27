@@ -13,11 +13,14 @@ import argparse
 # TOML filename:
 toml_fname = "credentials.toml"
 
+# CSV default filename:
+csv_fname = "tweets.csv"
+
 def arguments():
     parser = argparse.ArgumentParser()
 
     group = parser.add_mutually_exclusive_group()
-    group.add_argument('--csv', nargs='?', const='tweets.csv', default='tweets.csv', help='use csv file for mass removal of tweets', metavar='FILENAME')
+    group.add_argument('--csv', nargs=1, default=csv_fname, help='use a csv file for mass removal of tweets', metavar='FILENAME')
     group.add_argument('-s', '--soft', action='store_true', default=False, help='wipe your 3200 newer tweets')
     group.add_argument('-n', '--none', action='store_true', default=False, help='do not proceed to tweets deletion')
 
@@ -37,7 +40,7 @@ def build_api(conf):
 def doit():
      # Ensure that user is aware of what is going on
     cin = input("> Do you really want to proceed ? (y/N) : ")
-    if( cin != "y" and "Y" != cin ): 
+    if( cin != "y" and "Y" != cin ):
         return False
     return True
 
@@ -48,19 +51,19 @@ def wipe_csv(api, args):
 
     with open(args.csv, newline='', encoding='utf-8') as csv_file:
         csv_reader = csv.DictReader(csv_file)
-        
+
         # Get total number of tweets inside csv file
         for row in csv_reader:
             ntweets += 1
-        
+
         # Reset iter
         csv_file.seek(0)
         csv_reader.__init__(csv_file)
-        
+
         print("\n{} tweets found in csv file.".format(ntweets))
         print("We are going to delete them one by one.")
         print("It may take a long time, you should make yourself some coffee.")
-        
+
         if not doit(): return
 
         for index, row in enumerate(csv_reader):
@@ -94,7 +97,7 @@ def wipe_soft(api):
                 print("[DONE]", end='\r')
             except twitter.error.TwitterError as e:
                 print("[FAILED] ->", e, end='\r')
-        
+
         print("\n10 seconds break before fetching tweets again")
         time.sleep(10)
         tweets = api.GetUserTimeline()
