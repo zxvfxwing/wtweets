@@ -22,10 +22,10 @@ The twitter API sets a limit of 3200 tweets recovered per user.
 By parsing csv file, we can retrieve tweets ID (and more) directly and without worries.
 
 ## Windows user ?
-Download [python 3.x.x](https://www.python.org/downloads/)
-Go into `scripts` folder and click on `windows.bat` file.
-This will start a cmd and install dependencies + print you __Usage__.
-You can skip __Dependencies__ section.
+Download [python 3.x.x](https://www.python.org/downloads/)  
+Go into `scripts` folder and click on `windows.bat` file.  
+This will start a cmd and install dependencies + print you __Usage__.  
+You can skip __Dependencies__ section.  
 You should use `python` instead of `python3` for running wtweets.py.
 
 ## Dependencies :
